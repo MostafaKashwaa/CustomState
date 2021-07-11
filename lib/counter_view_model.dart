@@ -1,13 +1,31 @@
 import 'package:flutter/foundation.dart';
 
-class CounterViewModel extends ValueNotifier<int> {
-  CounterViewModel(value) : super(value);
+class CounterViewModel {
+  ValueNotifier<int> counter = ValueNotifier(0);
+  ValueNotifier<ValueStatus> state = ValueNotifier(ValueStatus.Idle);
 
-  void increment() {
-    value++;
+  void increment() async {
+    state.value = ValueStatus.Waiting;
+    await Future.delayed(Duration(milliseconds: 2000));
+    state.value = ValueStatus.Success;
+    counter.value++;
   }
 
   void decrement() {
-    value--;
+    counter.value--;
   }
 }
+
+enum ValueStatus { Idle, Success, Waiting, Failed }
+
+// class CounterViewModel extends ValueNotifier<int> {
+//   CounterViewModel(value) : super(value);
+//
+//   void increment() {
+//     value++;
+//   }
+//
+//   void decrement() {
+//     value--;
+//   }
+// }
