@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
                 }
               },
             )
+
           ],
         ),
       ),
@@ -58,6 +59,7 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
+              count++;
               counterViewModel.increment();
             },
             tooltip: 'Increment',
@@ -65,6 +67,7 @@ class HomePage extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () {
+              count--;
               counterViewModel.decrement();
             },
             tooltip: 'Decrement',

@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 
 class CounterWidget extends StatefulWidget {
+  // class CounterWidget extends StatefulWidget {
+  // static _CounterWidgetState? of(BuildContext context) =>
 
   late final int value;
   CounterWidget({Key? key, required this.value}) : super(key: key);
@@ -26,3 +29,4 @@ class ObserverState extends State<CounterWidget> {
     );
   }
 }
+
