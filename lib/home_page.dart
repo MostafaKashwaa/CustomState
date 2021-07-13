@@ -28,9 +28,9 @@ class HomePage extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            CounterWidget(
-              value: '$count',
-            )
+            // CounterWidget(
+            //   value: count,
+            // )
             // counterObserver(),
             // ValueListenableBuilder(
             //   valueListenable: counterViewModel,
@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
+              count++;
               counterViewModel.increment();
               print(count);
             },
@@ -58,6 +59,7 @@ class HomePage extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () {
+              count--;
               counterViewModel.decrement();
 
               print(count);

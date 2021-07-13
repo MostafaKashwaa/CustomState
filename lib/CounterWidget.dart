@@ -1,32 +1,46 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class CounterWidget extends StatefulWidget {
-  // static _CounterWidgetState? of(BuildContext context) =>
-  //     context.findAncestorStateOfType<_CounterWidgetState>();
+// // ignore: must_be_immutable
+// class CounterWidget extends StatefulWidget {
+//   // static _CounterWidgetState? of(BuildContext context) =>
+//   //     context.findAncestorStateOfType<_CounterWidgetState>();
 
-  Function changeValue = (int value) {};
+//   // Function changeValue = (int value) {};
 
-  CounterWidget({Key? key}) : super(key: key);
+//   final Function<Widget>(BuildContext c) x;
 
-  @override
-  _CounterWidgetState createState() => _CounterWidgetState(changeValue);
-}
+//   final int value;
 
-class _CounterWidgetState extends State<CounterWidget> {
-  int value = 0;
+//   CounterWidget({Key? key, required this.value, required this.x})
+//       : super(key: key);
 
-  _CounterWidgetState(Function onValueChange);
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      '${this.value}',
-    );
-  }
+//   @override
+//   _CounterWidgetState createState() => _CounterWidgetState();
+// }
 
-  void handleUpdate(int value) {
-    setState(() {
-      this.value = value;
-    });
-  }
-}
+// class _CounterWidgetState extends State<CounterWidget> {
+//   int value = 0;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return widget.x();
+//     // return Text(
+//     //   '${this.value}',
+//     // );
+//   }
+
+//   @override
+//   void didUpdateWidget(covariant CounterWidget oldWidget) {
+//     if (oldWidget.value != widget.value) {
+//       value = widget.value;
+//       handleUpdate(value);
+//     }
+//     super.didUpdateWidget(oldWidget);
+//   }
+
+//   void handleUpdate(int value) {
+//     setState(() {
+//       this.value = value;
+//     });
+//   }
+// }
