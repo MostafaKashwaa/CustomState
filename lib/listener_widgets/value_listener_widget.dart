@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ListenerWidget<T> extends StatefulWidget {
+class ValueListenerWidget<T> extends StatefulWidget {
   final ValueNotifier notifier;
   final Widget Function(T, BuildContext) child;
 
-  ListenerWidget({required this.notifier, required this.child});
+  ValueListenerWidget({required this.notifier, required this.child});
 
   @override
-  State<StatefulWidget> createState() => _ListenerWidgetState<T>();
+  State<StatefulWidget> createState() => _ValueListenerWidgetState<T>();
 }
 
-class _ListenerWidgetState<T> extends State<ListenerWidget<T>> {
+class _ValueListenerWidgetState<T> extends State<ValueListenerWidget<T>> {
   late T value;
 
   void listener() {
@@ -27,7 +27,7 @@ class _ListenerWidgetState<T> extends State<ListenerWidget<T>> {
   }
 
   @override
-  void didUpdateWidget(ListenerWidget<T> oldWidget) {
+  void didUpdateWidget(ValueListenerWidget<T> oldWidget) {
     if (oldWidget.notifier != widget.notifier) {
       oldWidget.notifier.removeListener(listener);
       value = widget.notifier.value;
@@ -39,5 +39,11 @@ class _ListenerWidgetState<T> extends State<ListenerWidget<T>> {
   @override
   Widget build(BuildContext context) {
     return widget.child(value, context);
+  }
+
+  @override
+  void dispose() {
+    widget.notifier.removeListener(listener);
+    super.dispose();
   }
 }

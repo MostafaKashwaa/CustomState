@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manual_observer/home_page.dart';
+import 'package:manual_observer/pages/future_notifire_page.dart';
+import 'package:manual_observer/pages/value_notifire_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(title: 'Flutter Demo Home Page'),
+      home: FutureNotifirePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

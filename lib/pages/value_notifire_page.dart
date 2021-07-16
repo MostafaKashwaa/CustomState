@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:manual_observer/CounterWidget.dart';
 import 'package:manual_observer/counter_view_model.dart';
-import 'package:manual_observer/sample_widget.dart';
+import 'package:manual_observer/listener_widgets/value_listener_widget.dart';
 
-// ignore: must_be_immutable
-class HomePage extends StatelessWidget {
+class ValueNotifirePage extends StatelessWidget {
   final String title;
-  int count = 0;
   final counterViewModel = CounterViewModel();
 
-  HomePage({Key? key, required this.title});
+  ValueNotifirePage({Key? key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class HomePage extends StatelessWidget {
                 Text(
                   'You have pushed the button this many times:',
                 ),
-                ListenerWidget<int>(
+                ValueListenerWidget<int>(
                   notifier: counterViewModel.counter,
                   child: (value, context) => Column(
                     children: [
@@ -39,18 +36,24 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            ListenerWidget<ValueStatus>(
+            ValueListenerWidget<ValueStatus>(
               notifier: counterViewModel.state,
               child: (value, context) {
                 if (value == ValueStatus.Waiting) {
-                  return Positioned(left: 0, right: 0, top: 0, bottom: 0,
+                  return Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
                       child: CircularProgressIndicator());
                 } else {
-                  return Container(width: 0, height: 0,);
+                  return Container(
+                    width: 0,
+                    height: 0,
+                  );
                 }
               },
             )
-
           ],
         ),
       ),
@@ -59,7 +62,6 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
-              count++;
               counterViewModel.increment();
             },
             tooltip: 'Increment',
@@ -67,7 +69,6 @@ class HomePage extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () {
-              count--;
               counterViewModel.decrement();
             },
             tooltip: 'Decrement',
@@ -82,7 +83,7 @@ class HomePage extends StatelessWidget {
                       title: Text("Dialog"),
                       content: Column(
                         children: [
-                          ListenerWidget<int>(
+                          ValueListenerWidget<int>(
                             notifier: counterViewModel.counter,
                             child: (value, context) => Column(
                               children: [
