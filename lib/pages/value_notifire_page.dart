@@ -4,13 +4,11 @@ import 'package:manual_observer/view/CounterScreen.dart';
 import 'package:manual_observer/view/components/counter_buttons.dart';
 import 'package:manual_observer/view/components/counter_dialog.dart';
 
-// ignore: must_be_immutable
-class HomePage extends StatelessWidget {
+class ValueNotifierPage extends StatelessWidget {
   final String title;
-  int count = 0;
   final counterViewModel = CounterViewModel();
 
-  HomePage({Key? key, required this.title});
+  ValueNotifierPage({Key? key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +23,7 @@ class HomePage extends StatelessWidget {
         onIncrement: () => counterViewModel.increment(),
         onDecrement: () => counterViewModel.decrement(),
         onOpen: () => buildCounterDialog(context),
+
       ),
     );
   }

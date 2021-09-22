@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../sample_widget.dart';
+import 'package:manual_observer/listener_widgets/value_listener_widget.dart';
 import 'counter_buttons.dart';
 
 class CounterDialog extends StatelessWidget {
@@ -22,7 +21,7 @@ class CounterDialog extends StatelessWidget {
       title: Text("Dialog"),
       content: Column(
         children: [
-          ListenerWidget<int>(
+          ValueListenerWidget<int>(
             notifier: notifier,
             child: (value, context) => Column(
               children: [

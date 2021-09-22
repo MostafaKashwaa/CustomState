@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:manual_observer/listener_widgets/value_listener_widget.dart';
 import '../counter_view_model.dart';
-import '../sample_widget.dart';
 
 class CounterScreen extends StatelessWidget {
   const CounterScreen({
@@ -14,7 +13,7 @@ class CounterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListenerWidget<ValueStatus>(
+    return ValueListenerWidget<ValueStatus>(
       notifier: counterViewModel.state,
       child: (value, context) {
         if (value == ValueStatus.Waiting) {
@@ -40,7 +39,7 @@ class CounterScreen extends StatelessWidget {
         Text(
           'You have pushed the button this many times:',
         ),
-        ListenerWidget<int>(
+        ValueListenerWidget<int>(
           notifier: counter,
           child: (value, context) => Column(
             children: [
