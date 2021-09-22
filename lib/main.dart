@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:manual_observer/home_page.dart';
-import 'package:manual_observer/test_screen.dart';
 
 void main() {
   runApp(MyApp());

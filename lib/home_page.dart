@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:manual_observer/counter_view_model.dart';
-import 'package:manual_observer/sample_widget.dart';
 import 'package:manual_observer/view/CounterScreen.dart';
 import 'package:manual_observer/view/components/counter_buttons.dart';
 import 'package:manual_observer/view/components/counter_dialog.dart';
