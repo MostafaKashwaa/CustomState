@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manual_observer/pages/future_notifire_page.dart';
-import 'package:manual_observer/pages/value_notifire_page.dart';
+import 'package:manual_observer/pages/future_notifier_page.dart';
+import 'package:manual_observer/pages/value_notifier_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: FutureNotifierPage(title: 'Flutter Demo Home Page'),
-      home: ValueNotifierPage(title: 'Flutter Demo Home Page'),
+      home: FutureNotifierPage(title: 'Future Notifier Page'),
+      // home: ValueNotifierPage(title: 'Value Notifier Page'),
     );
   }
 }

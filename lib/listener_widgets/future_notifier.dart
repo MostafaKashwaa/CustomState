@@ -17,8 +17,8 @@ class FutureNotifier<T extends Future> extends ChangeNotifier
     _value.then((value) {
       valueSnapshot = value;
       notifyListeners();
-    }, onError: () {
-      valueSnapshot = Error();
+    }, onError: (error) {
+      valueSnapshot = error;
       notifyListeners();
     });
   }

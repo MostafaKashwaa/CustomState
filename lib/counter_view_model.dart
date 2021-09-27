@@ -4,7 +4,7 @@ import 'package:manual_observer/listener_widgets/future_notifier.dart';
 class CounterViewModel {
   ValueNotifier<int> counter = ValueNotifier(0);
   ValueNotifier<ValueStatus> state = ValueNotifier(ValueStatus.Idle);
-  // FutureNotifier<Future<int>> fCounter = FutureNotifier();
+  FutureNotifier<Future<int>> fCounter = FutureNotifier();
 
   int testCounter = 0;
 
@@ -19,20 +19,22 @@ class CounterViewModel {
     counter.value--;
   }
 
-  // CounterViewModel() {
-    // fCounter.setValue(createFuture());
-  // }
+  CounterViewModel() {
+    fCounter.setValue(createIncrementFuture());
+  }
 
-  // Future<int> createFuture() async {
-  //   await Future.delayed(Duration(milliseconds: 3000));
-  //   return testCounter++;
-  // }
+  void incrementAsync() => fCounter.setValue(createIncrementFuture());
+  void decrementAsync() => fCounter.setValue(createDecrementFuture());
 
-  // void incrementAsync() {
-  //   fCounter.setValue(createFuture());
-  // }
+  Future<int> createIncrementFuture() async {
+    await Future.delayed(Duration(milliseconds: 3000));
+    return testCounter++;
+  }
 
-
+  Future<int> createDecrementFuture() async {
+    await Future.delayed(Duration(microseconds: 1000));
+    return testCounter--;
+  }
 
   // void getData() async {}
 }
