@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:manual_observer/infrastructure/observable.dart';
 import 'package:manual_observer/listener_widgets/future_notifier.dart';
 
 class CounterViewModel {
   ValueNotifier<int> counter = ValueNotifier(0);
   ValueNotifier<ValueStatus> state = ValueNotifier(ValueStatus.Idle);
   FutureNotifier<Future<int>> fCounter = FutureNotifier();
+  Observable<Future<int>> oCounter = Observable();
 
   int testCounter = 0;
 
@@ -20,20 +22,24 @@ class CounterViewModel {
   }
 
   CounterViewModel() {
-    fCounter.setValue(createIncrementFuture());
+    // fCounter.setValue(_createIncrementFuture());
+    oCounter.setValue(Future(() => 0));
   }
 
-  void incrementAsync() => fCounter.setValue(createIncrementFuture());
-  void decrementAsync() => fCounter.setValue(createDecrementFuture());
+  void incrementAsync() => {};//fCounter.setValue(_createIncrementFuture());
+  void decrementAsync() => {};//fCounter.setValue(_createDecrementFuture());
 
-  Future<int> createIncrementFuture() async {
-    await Future.delayed(Duration(milliseconds: 3000));
-    return testCounter++;
+  void incrementObservableAsync() => oCounter.setValue(_createIncrementFuture());
+  void decrementObservableAsync() => oCounter.setValue(_createDecrementFuture());
+
+  Future<int> _createIncrementFuture() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    return ++testCounter;
   }
 
-  Future<int> createDecrementFuture() async {
-    await Future.delayed(Duration(microseconds: 1000));
-    return testCounter--;
+  Future<int> _createDecrementFuture() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    return --testCounter;
   }
 
   // void getData() async {}

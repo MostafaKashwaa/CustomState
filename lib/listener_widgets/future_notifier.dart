@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 class FutureNotifier<T extends Future> extends ChangeNotifier
     implements ValueListenable<T> {
   dynamic valueSnapshot = 0;
-  // late T _value;
+  late T _value;
 
   /// Creates a [ChangeNotifier] that wraps this value.
   FutureNotifier() {
@@ -30,7 +30,6 @@ class FutureNotifier<T extends Future> extends ChangeNotifier
   /// listeners.
   @override
   T get value => _value;
-  late T _value;
   set value(T newValue) {
     if (_value == newValue) return;
     _value = newValue;

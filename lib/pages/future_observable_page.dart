@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:manual_observer/counter_view_model.dart';
+import 'package:manual_observer/infrastructure/future_widget.dart';
 import 'package:manual_observer/listener_widgets/future_listener_widget.dart';
 import 'package:manual_observer/listener_widgets/value_listener_widget.dart';
 import 'package:manual_observer/view/components/counter_buttons.dart';
 import 'package:manual_observer/view/components/counter_dialog.dart';
 
-class FutureNotifierPage extends StatelessWidget {
+class FutureObservablePage extends StatelessWidget {
   final String title;
   final counterViewModel = CounterViewModel();
 
-  FutureNotifierPage({Key? key, required this.title});
+  FutureObservablePage({Key? key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +45,12 @@ class FutureCounterScreen extends StatelessWidget {
               Text(
                 'You have pushed the button this many times:',
               ),
-              FutureListenerWidget<int>(
-                notifier: counterViewModel.fCounter,
-                child: (value, context) => Column(
-                  children: [
-                    Text(
-                      '$value',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ],
+              FutureWidget<int>(
+                initialValue: 1,
+                observable: counterViewModel.oCounter,
+                child: (value, context) => Text(
+                  '$value',
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
             ],
@@ -62,7 +60,7 @@ class FutureCounterScreen extends StatelessWidget {
             child: (value, context) {
               if (value == ValueStatus.Waiting) {
                 return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [CircularProgressIndicator()]);
               } else {
                 return Container(
@@ -89,8 +87,8 @@ class FutureCounterButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CounterButtons(
-        onIncrement: counterViewModel.incrementAsync,
-        onDecrement: counterViewModel.decrementAsync,
+        onIncrement: counterViewModel.incrementObservableAsync,
+        onDecrement: counterViewModel.decrementObservableAsync,
         onOpen: () => {
               showDialog(
                   context: context,
@@ -99,9 +97,6 @@ class FutureCounterButtons extends StatelessWidget {
                         onIncrement: () => counterViewModel.increment(),
                         onDecrement: () => counterViewModel.decrement(),
                       ))
-            }
-            );
+            });
   }
 }
-
-

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manual_observer/pages/future_notifier_page.dart';
+import 'package:manual_observer/pages/future_observable_page.dart';
 import 'package:manual_observer/pages/value_notifier_page.dart';
 
 void main() {
@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FutureNotifierPage(title: 'Future Notifier Page'),
+      // home: FutureNotifierPage(title: 'Future Notifier Page'),
       // home: ValueNotifierPage(title: 'Value Notifier Page'),
+      home: FutureObservablePage(title: 'Value Observable Page'),
     );
   }
 }
